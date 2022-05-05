@@ -6,5 +6,8 @@ lalrpop_mod!(pub integers);
 fn integers() {
     assert!(integers::TermParser::new().parse("22").is_ok());
     assert!(integers::TermParser::new().parse("{\"22\"}").is_ok());
+    assert!(integers::TermParser::new().parse("\"22\"}").is_err());
     assert!(integers::TermParser::new().parse("{22\"}").is_err());
+    assert!(integers::TermParser::new().parse("{\"22}").is_err());
+    assert!(integers::TermParser::new().parse("{\"22\"").is_err());
 }
