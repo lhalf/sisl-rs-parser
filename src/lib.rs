@@ -5,10 +5,10 @@ lalrpop_mod!(pub integers);
 #[test]
 fn integers() {
     assert!(integers::TermParser::new().parse("22").is_ok());
-    assert!(integers::TermParser::new().parse("{\"!int 22\"}").is_ok());
-    assert!(integers::TermParser::new().parse("\"!int 22\"}").is_err());
-    assert!(integers::TermParser::new().parse("{\"int 22\"}").is_err());
-    assert!(integers::TermParser::new().parse("{!int 22\"}").is_err());
-    assert!(integers::TermParser::new().parse("{\"!int 22}").is_err());
-    assert!(integers::TermParser::new().parse("{\"!int 22\"").is_err());
+    assert!(integers::TermParser::new().parse("{\"!i32 22\"}").is_ok());
+    assert!(integers::TermParser::new().parse("\"!i32 22\"}").is_err());
+    assert!(integers::TermParser::new().parse("{\"i32 22\"}").is_err());
+    assert!(integers::TermParser::new().parse("{!i32 22\"}").is_err());
+    assert!(integers::TermParser::new().parse("{\"!i32 22}").is_err());
+    assert!(integers::TermParser::new().parse("{\"!i32 22\"").is_err());
 }
