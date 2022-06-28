@@ -1,6 +1,6 @@
 use nom::{bytes::complete::tag, IResult};
 
-fn foo(input: &str) -> IResult<&str, &str>
+fn parse(input: &str) -> IResult<&str, &str>
 {
     tag("int")(input)
 }
@@ -8,11 +8,11 @@ fn foo(input: &str) -> IResult<&str, &str>
 #[cfg(test)]
 mod tests
 {
-    use crate::parser::foo;
+    use crate::parser::parse;
 
     #[test]
     fn int()
     {
-        assert_eq!(foo("int bar"), Ok((" bar", "int")));
+        assert_eq!(parse("int 1"), Ok((" 1", "int")));
     }
 }
